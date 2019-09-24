@@ -1,4 +1,3 @@
-#! env/bin/python3
 from os import path
 import sys
 from flask import Flask, jsonify, request, send_file
@@ -9,6 +8,7 @@ import matplotlib.pyplot as plt
 
 modulePath = path.abspath(path.join(path.dirname(__file__), '../'))
 sys.path.append(modulePath)
+sys.path.append(path.abspath(path.dirname(__file__)))
 
 from modules import skin_detection, convert
 from helpers import upload, error
@@ -37,4 +37,4 @@ def imageQuery(image_name):
   return send_file(f"{transformedPath}{image_name}")
 
 if __name__ == '__main__':
-   app.run(port=3000, debug=True)
+   app.run()
